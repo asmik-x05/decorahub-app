@@ -3,20 +3,29 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #6b4226;
+  --secondary: #a97455;
+  --bglight: #f5f1e6;
+  --bgdark: #1c1c1c;
+  --txtprimary: #3e2c1c;
+  --txtprimarydark: #e6d8c3;
+  --txtsecondary: #7d5a45;
+  --txtsecondarydark: #c0a78a;
+  --headerfooter: #e5e7eb;
+  --headerfooterdark: #222222;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-bglight: var(--bglight);
+  --color-bgdark: var(--bgdark);
+  --color-txt-primary: var(--txtprimary);
+  --color-txt-primary-dark: var(--txtprimarydark);
+  --color-txt-secondary: var(--txtsecondary);
+  --color-txt-secondary-dark: var(--txtsecondarydark);
+  --color-header-footer: var(--headerfooter);
+  --color-header-footer-dark: var(--headerfooterdark);
 }
 
 body {
