@@ -60,7 +60,7 @@ const ProductFilter = () => {
         <select
           name="sort"
           id="sort"
-          className="rounded-lg px-2 py-1 outline-0 border border-gray-300 w-full"
+             className="rounded-lg px-2 py-1 outline-0 border border-gray-300 w-full bg-primary font-medium text-white"
           onChange={(e) => setSort(e.target.value)}
         >
           <option value={DEFAULT_SORT}>Date: Latest</option>
@@ -78,7 +78,7 @@ const ProductFilter = () => {
 
       <div className="py-4">
         <h4 className="mb-2 font-medium">Price Range</h4>
-        <div className="flex gap-2 text-gray-800">
+        <div className="flex gap-2 ">
           <input
             type="number"
             id="min"
@@ -101,15 +101,16 @@ const ProductFilter = () => {
         <select
           name="Category"
           id="Category"
-          className="rounded-lg px-2 py-1 outline-0 border border-gray-300 w-full"
+          className="rounded-lg px-2 py-1 outline-0 border border-gray-300 w-full bg-primary font-medium text-white"
           onChange={(e) => setCategory(e.target.value)}
         >
-          <option value="">All</option>
-          <option value="table">Table</option>
-          <option value="sofa">Sofa</option>
-          <option value="chair">Chair</option>
-          <option value="bed">Bed</option>
-          <option value="storage">Storage</option>
+          <option value="" className="">All</option>
+          <option value="table" className="">Table</option>
+          <option value="sofa" className="">Sofa</option>
+          <option value="chair" className="">Chair</option>
+          <option value="bed" className="">Bed</option>
+          <option value="storage" className="">Storage</option>
+            
         </select>
       </div>
       <div className="py-4">

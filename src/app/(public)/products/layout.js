@@ -3,10 +3,10 @@ import React from "react";
 
 const layout = ({ children }) => {
   return (
-    <>
+    <div className="bg-bglight dark:bg-bgdark">
       <Banner />
       {children}
-    </>
+    </div>
   );
 };
 
