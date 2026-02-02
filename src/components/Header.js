@@ -1,14 +1,10 @@
 import Link from "next/link";
 import React from "react";
 import { HiOutlineHomeModern } from "react-icons/hi2";
-import {
-  FaBars,
-  FaMoon,
-  FaSearch,
-  FaShoppingCart,
-  FaUser,
-} from "react-icons/fa";
+import { FaBars, FaSearch, FaShoppingCart } from "react-icons/fa";
 import Navlink from "./Navlink";
+import ThemeToggler from "./ThemeToggler";
+import User from "./User";
 
 const Header = () => {
   return (
@@ -25,12 +21,17 @@ const Header = () => {
             </div>
           </Link>
           <Navlink className="hidden md:block" />
-          <div className="flex gap-5 p-2">
-            <FaSearch className="text-lg" />
-            <FaShoppingCart className="text-lg" />
-            <FaUser className="text-lg" />
-            <FaMoon className="text-lg" />
-            <FaBars className="text-lg" />
+          <div className="flex gap-4 p-2 items-center">
+            <div className="h-8 w-8 rounded-full flex justify-center items-center">
+              <FaSearch className="text-lg cursor-pointer" />
+            </div>
+            <div className="h-8 w-8 rounded-full flex justify-center items-center">
+              <FaShoppingCart className="text-lg cursor-pointer" />
+            </div>
+            <div className="h-8 w-8 rounded-full flex justify-center items-center">
+              <ThemeToggler />
+            </div>
+            <User />
           </div>
         </div>
         {/* This is for mobile view */}
@@ -44,11 +45,14 @@ const Header = () => {
                 <HiOutlineHomeModern className="text-3xl font-semibold hover:text-secondary" />
               </div>
             </Link>
-            <div className="flex gap-5">
-              <FaMoon />
-              <FaShoppingCart />
-              <FaUser />
-              <FaBars />
+            <div className="flex gap-4 p-2 items-center">
+              <div className="h-8 w-8 rounded-full flex justify-center items-center">
+                <FaShoppingCart className="text-lg cursor-pointer" />
+              </div>
+              <div className="h-8 w-8 rounded-full flex justify-center items-center">
+                <ThemeToggler />
+              </div>
+              <User />
             </div>
           </div>
           <div className="p-2 relative">
@@ -60,6 +64,9 @@ const Header = () => {
             <button className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600 dark:text-gray-300">
               <FaSearch />
             </button>
+          </div>
+          <div className="flex justify-center items-center">
+            <FaBars />
           </div>
           <Navlink className="hidden" />
         </div>
