@@ -65,7 +65,7 @@ const ProductForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit(submitForm)} className="w-2/4">
+    <form onSubmit={handleSubmit(submitForm)} className="w-2/4 border p-6 rounded-lg bg-secondary/10 dark:bg-gray-800">
       <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
         <div className="sm:col-span-2">
           <label
@@ -77,7 +77,7 @@ const ProductForm = () => {
           <input
             type="text"
             id="name"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg outline-primary block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+            className="bg-gray-50 border-2 border-gray-300 text-gray-950 text-lg rounded-lg outline-primary block w-full p-1.5 dark:border-gray-600 dark:placeholder-gray-400 dark:bg-gray-300"
             placeholder="Type product name"
             required
             {...register("name")}
@@ -93,7 +93,7 @@ const ProductForm = () => {
           <input
             type="text"
             id="brand"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg outline-primary block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+            className="bg-gray-50 border-2 border-gray-300 text-gray-950 text-lg rounded-lg outline-primary block w-full p-1.5 dark:border-gray-600 dark:placeholder-gray-400 dark:bg-gray-300"
             placeholder="Product brand"
             required
             {...register("brand")}
@@ -109,7 +109,7 @@ const ProductForm = () => {
           <input
             type="number"
             id="price"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg outline-primary block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+            className="bg-gray-50 border-2 border-gray-300 text-gray-950 text-lg rounded-lg outline-primary block w-full p-1.5 dark:border-gray-600 dark:placeholder-gray-400 dark:bg-gray-300"
             placeholder="Rs. 10000"
             required
             {...register("price")}
@@ -125,7 +125,7 @@ const ProductForm = () => {
           <input
             type="text"
             id="category"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg outline-primary block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+            className="bg-gray-50 border-2 border-gray-300 text-gray-950 text-lg rounded-lg outline-primary block w-full p-1.5 dark:border-gray-600 dark:placeholder-gray-400 dark:bg-gray-300"
             placeholder="Product category"
             required
             {...register("category")}
@@ -141,7 +141,7 @@ const ProductForm = () => {
           <input
             type="number"
             id="stock"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg outline-primary block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+            className="bg-gray-50 border-2 border-gray-300 text-gray-950 text-lg rounded-lg outline-primary block w-full p-1.5 dark:border-gray-600 dark:placeholder-gray-400 dark:bg-gray-300"
             placeholder={10}
             {...register("stock")}
           />
@@ -152,7 +152,7 @@ const ProductForm = () => {
           </label>
           <div className="flex items-center justify-center w-full">
             <div
-              className="flex flex-col items-center justify-center rounded-lg w-full border border-dashed border-gray-300 cursor-pointer hover:bg-gray-50 "
+              className="flex flex-col items-center justify-center dark:bg-gray-500 rounded-lg w-full border-2 border-dashed border-gray-300 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-600 dark:text-gray-100"
               {...getRootProps()}
             >
               <div className="flex flex-col items-center justify-center text-body py-10">
@@ -190,7 +190,7 @@ const ProductForm = () => {
           {selectedImages.map((image, index) => (
             <div
               key={index}
-              className="border border-gray-200 rounded-lg p-3 flex items-center gap-4 mt-2"
+              className="border-2 border-gray-200 rounded-lg p-3 flex items-center gap-4 mt-2"
             >
               <Image
                 src={image.url}
@@ -220,8 +220,8 @@ const ProductForm = () => {
           </label>
           <textarea
             id="description"
-            rows={8}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg outline-primary block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+            rows={6}
+            className="bg-gray-50 border-2 border-gray-300 text-gray-900 text-lg rounded-lg outline-primary block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-100 dark:text-gray-900 dark:bg-gray-400"
             placeholder="Your description here"
             defaultValue={""}
             {...register("description")}
