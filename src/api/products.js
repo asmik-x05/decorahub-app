@@ -28,3 +28,15 @@ export const getProducts = async ({ searchParams }) => {
 
   return response.data;
 };
+
+export const addProduct = async (data) => {
+  const authToken = localStorage.getItem("authToken");
+
+  const response = await axios.post(`${config.apiUrl}/api/product`, data, {
+    headers: {
+      Authorization: `Bearer ${authToken}`,
+    },
+  });
+
+  return response.data;
+};
