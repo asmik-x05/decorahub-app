@@ -9,7 +9,9 @@ const Authlayout = ({ children }) => {
   const { user } = useSelector((state) => state.auth);
   const router = useRouter();
   useEffect(() => {
-    if (user) router.push(HOME_ROUTE);
+    if (user) {
+      router.push(HOME_ROUTE);
+    }
   }, [user]);
 
   return <>{children}</>;

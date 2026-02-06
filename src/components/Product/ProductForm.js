@@ -1,6 +1,6 @@
 "use client";
 
-import { addProduct } from "@/api/products";
+import { addProduct, updateProduct } from "@/api/products";
 import { FaPlus, FaTimes } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { useCallback, useState } from "react";
@@ -9,8 +9,18 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-const ProductForm = () => {
-  const { register, handleSubmit } = useForm();
+const ProductForm = ({ product }) => {
+  console.log(product);
+  const { register, handleSubmit } = useForm({
+    values: {
+      name: product?.name || "",
+      brand: product?.brand || "",
+      category: product?.category || "",
+      price: product?.price || "",
+      stock: product?.stock || 1,
+      description: product?.description || "",
+    },
+  });
   const [selectedImages, setSelectedImages] = useState([]);
   const [imageFiles, setImageFiles] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -54,7 +64,19 @@ const ProductForm = () => {
       });
     }
 
-    addProduct(formdata)
+    if (product) {
+      updateProduct(product._id, formdata)
+        .then(() => {
+          toast.success("Product updated successfully");
+
+          router.back();
+          router.refresh();
+        })
+        .catch((error) => toast.error(error.response?.data))
+        .finally(() => setLoading(false));
+    }
+    else {
+       addProduct(formdata)
       .then(() => {
         toast.success("Product created successfully");
 
@@ -62,10 +84,14 @@ const ProductForm = () => {
       })
       .catch((error) => toast.error(error.response?.data))
       .finally(() => setLoading(false));
+    }
   }
 
   return (
-    <form onSubmit={handleSubmit(submitForm)} className="w-2/4 border p-6 rounded-lg bg-secondary/10 dark:bg-gray-800">
+    <form
+      onSubmit={handleSubmit(submitForm)}
+      className="w-2/4 border p-6 rounded-lg bg-secondary/10 dark:bg-gray-800"
+    >
       <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
         <div className="sm:col-span-2">
           <label
@@ -233,7 +259,9 @@ const ProductForm = () => {
         disabled={loading}
         className="disabled:opacity-80 inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary/90 rounded-lg hover:bg-primary cursor-pointer"
       >
-        <span className="mr-2">Add product</span>
+        <span className="mr-2">
+          {product ? "Update product" : "Add product"}
+        </span>
         {loading ? "..." : <FaPlus />}
       </button>
     </form>

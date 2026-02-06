@@ -76,23 +76,23 @@ const SideBar = () => {
             <FaUsers /> <h2>Customers</h2>
           </div>
         </Link>
-        <Link
+        {/* <Link
           href={ADMIN_REVIEWS_ROUTE}
           className="hover:bg-primary/90 hover:text-white p-3 text-xl hover:rounded-2xl"
         >
           <div className="flex gap-2 items-center">
             <FaStar /> <h2>Reviews</h2>
           </div>
-        </Link>
-        <Link
+        </Link> */}
+        {/* <Link
           href={ADMIN_PROMOTIONS_ROUTE}
           className="hover:bg-primary/90 hover:text-white p-3 text-xl hover:rounded-2xl"
         >
           <div className="flex gap-2 items-center">
             <RiDiscountPercentFill /> <h2>Promotions</h2>
           </div>
-        </Link>
-        <Link
+        </Link> */}
+        {/* <Link
           href={ADMIN_SHIPPING_ROUTE}
           className="hover:bg-primary/90 hover:text-white p-3 text-xl hover:rounded-2xl"
         >
@@ -115,7 +115,7 @@ const SideBar = () => {
           <div className="flex gap-2 items-center">
             <FaHeadset /> <h2>Support</h2>
           </div>
-        </Link>
+        </Link> */}
         <Link
           href={ADMIN_SETTING_ROUTE}
           className="hover:bg-primary/90 hover:text-white p-3 text-xl hover:rounded-2xl"

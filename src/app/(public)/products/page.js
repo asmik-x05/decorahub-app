@@ -3,8 +3,8 @@ import ProductFilter from "@/components/Product/Filter";
 import ProductCard from "@/components/Product/ProductCard";
 import React from "react";
 
-const productsPage = async ({ searchParams }) => {
-  const getAllProducts = await getProducts({ searchParams });
+const productsPage = async ( {searchParams} ) => {
+  const getAllProducts = await getProducts({searchParams} );
   return (
     <section>
       <div className="grid grid-cols-1 md:grid-cols-[1fr_4fr] gap-8 pb-8 dark:text-gray-200">

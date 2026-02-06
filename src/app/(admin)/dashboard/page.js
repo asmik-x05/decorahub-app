@@ -11,7 +11,7 @@ const page = () => {
     <section className="p-8 w-full bg-bglight dark:bg-gray-900 dark:text-gray-100">
       <div className="p-4 flex-1">
         <h2 className="font-bold text-2xl">Dashboard</h2>
-        <hr className="h-1 bg-blue-600" />
+        <hr className="h-1 bg-blue-600 text-blue-600" />
         <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-4 mt-5 mb-8 ">
           <div className="p-8 shadow rounded-lg bg-gray-200 dark:bg-gray-700 dark:text-bglight flex flex-col justify-between">
             <div className="flex w-full justify-between mb-4">
