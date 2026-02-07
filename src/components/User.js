@@ -1,14 +1,18 @@
 "use client";
+import { ROLE_MERCHANT } from "@/constants/roles";
 import { LOGIN_ROUTE } from "@/constants/routes";
 import { logout } from "@/redux/auth/authSlice";
+import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaUser } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 
 const User = () => {
   const { user } = useSelector((state) => state.auth);
   const [show, setShow] = useState(false);
+  const [showDashboard, setShowDashboard] = useState(false);
+
   const dispatch = useDispatch();
   if (!user) {
     return (
@@ -21,14 +25,28 @@ const User = () => {
       </Link>
     );
   }
+  if (user && user.Role.includes(ROLE_MERCHANT) && !showDashboard) {
+    setShowDashboard(true);
+  }
+
   return (
     <div className="relative z-50 mx-5">
-      <div className="h-8 w-8 rounded-full bg-green-500 text-white flex justify-center items-center">
-        <FaUser
-          className="text-lg cursor-pointer"
-          onClick={() => setShow(!show)}
-        />
-      </div>
+      <button
+        onClick={() => setShow(true)}
+        className="border rounded-full h-8 min-w-8 flex items-center justify-center text-gray-700dark:text-gray-300 hover:text-primary cursor-pointer"
+      >
+        {user?.profileImgUrl ? (
+          <Image
+            src={user.profileImgUrl}
+            height={128}
+            width={128}
+            alt={user.name}
+            className="h-8 w-8 rounded-full object-cover"
+          />
+        ) : (
+          <FaUser />
+        )}
+      </button>
 
       {show && (
         <>
@@ -42,23 +60,31 @@ const User = () => {
               <p className="text-blue-600">{user?.Email}</p>
             </div>
             <div className="flex flex-col px-4 py-2">
+              {showDashboard && (
+                <Link
+                  href={"/dashboard"}
+                  className="py-1 px-4 dark:hover:bg-primary hover:bg-secondary hover:text-gray-100 rounded-lg text-lg font-medium dark:text-gray-100"
+                >
+                  Dashboard
+                </Link>
+              )}
               <Link
                 href={"/"}
                 className="py-1 px-4 dark:hover:bg-primary hover:bg-secondary hover:text-gray-100 rounded-lg text-lg font-medium dark:text-gray-100"
               >
-                Dashboard
+                Orders
               </Link>
               <Link
                 href={"/"}
                 className="py-1 px-4 dark:hover:bg-primary hover:bg-secondary hover:text-gray-100 rounded-lg text-lg font-medium dark:text-gray-100"
               >
-                Setting
+                Profile
               </Link>
               <button
                 className="py-1 hover:bg-red-700 bg-red-600 text-gray-100 rounded-lg text-lg font-medium mt-2 cursor-pointer"
                 onClick={() => dispatch(logout())}
               >
-                logout
+                Logout
               </button>
             </div>
           </div>

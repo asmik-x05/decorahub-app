@@ -1,6 +1,9 @@
 import { getProducts } from "@/api/products";
 import Pagination from "@/components/Product/Pagination";
+
+
 import ProductsTable from "@/components/Product/Table";
+import ThemeToggler from "@/components/ThemeToggler";
 import Link from "next/link";
 import React from "react";
 
@@ -9,7 +12,10 @@ const AdminProductManagementPage = async ({searchParams}) => {
   return (
     <section className="p-8 w-full bg-bglight dark:bg-gray-900 dark:text-gray-100">
       <div className="p-4 flex-1">
-        <h2 className="font-bold text-2xl">Product Management</h2>
+        <div className="flex justify-between">
+          <h2 className="font-bold text-2xl">Product Management</h2>
+          <ThemeToggler />
+        </div>
         <hr className="h-1 bg-blue-600 text-blue-600" />
       </div>
       <div className="mb-4 flex justify-end">

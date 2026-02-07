@@ -1,6 +1,8 @@
 "use client";
 import { getAllOrders } from "@/api/orders";
 import OrderTable from "@/components/Orders/OrderTable";
+import Pagination from "@/components/Product/Pagination";
+import ThemeToggler from "@/components/ThemeToggler";
 import { ROLE_ADMIN } from "@/constants/roles";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -34,7 +36,10 @@ const AdminOrderManagementPage = () => {
   return (
     <section className="p-8 w-full bg-bglight dark:bg-gray-900 dark:text-gray-100">
       <div className="p-4 flex-1">
-        <h2 className="font-bold text-2xl">Order Management</h2>
+        <div className="flex justify-between">
+          <h2 className="font-bold text-2xl">Order Management</h2>
+          <ThemeToggler />
+        </div>
         <hr className="h-1 bg-blue-600 text-blue-600" />
       </div>
       <div className="flex justify-end p-4">
@@ -60,6 +65,7 @@ const AdminOrderManagementPage = () => {
         </div>
       </div>
       <OrderTable orders={orders} />
+      <Pagination />
     </section>
   );
 };

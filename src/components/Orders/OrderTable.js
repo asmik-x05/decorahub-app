@@ -8,7 +8,6 @@ import { ADMIN_ORDERS_ROUTE, ADMIN_PRODUCTS_ROUTE, PRODUCTS_ROUTE } from "@/cons
 import OrderAction from "./Action";
 
 const OrderTable = ({ loading, orders, disableAction }) => {
-  console.log(orders);
   return (
     <div className="overflow-x-auto">
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">

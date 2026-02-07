@@ -1,5 +1,7 @@
 "use client";
+import AccessDenied from "@/components/AcessDenied";
 import SideBar from "@/components/admin/SideBar";
+import { ROLE_MERCHANT } from "@/constants/roles";
 import { LOGIN_ROUTE } from "@/constants/routes";
 import { useRouter } from "next/navigation";
 
@@ -8,10 +10,14 @@ import { useSelector } from "react-redux";
 
 const layout = ({ children }) => {
   const { user } = useSelector((state) => state.auth);
+  
   const router = useRouter();
   useEffect(() => {
     if (!user) router.push(LOGIN_ROUTE);
   }, [user]);
+  if (!user?.Role.includes(ROLE_MERCHANT))
+    return (<AccessDenied />
+    );
   return (
     <div className="flex w-full">
       <SideBar />
