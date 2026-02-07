@@ -1,6 +1,6 @@
 "use client";
 import { ROLE_MERCHANT } from "@/constants/roles";
-import { LOGIN_ROUTE } from "@/constants/routes";
+import { LOGIN_ROUTE, ORDER_ROUTE, PROFILE_ROUTE } from "@/constants/routes";
 import { logout } from "@/redux/auth/authSlice";
 import Image from "next/image";
 import Link from "next/link";
@@ -40,7 +40,7 @@ const User = () => {
             src={user.profileImgUrl}
             height={128}
             width={128}
-            alt={user.name}
+            alt={user?.Name || "User"}
             className="h-8 w-8 rounded-full object-cover"
           />
         ) : (
@@ -69,13 +69,13 @@ const User = () => {
                 </Link>
               )}
               <Link
-                href={"/"}
+                href={ORDER_ROUTE}
                 className="py-1 px-4 dark:hover:bg-primary hover:bg-secondary hover:text-gray-100 rounded-lg text-lg font-medium dark:text-gray-100"
               >
                 Orders
               </Link>
               <Link
-                href={"/"}
+                href={PROFILE_ROUTE}
                 className="py-1 px-4 dark:hover:bg-primary hover:bg-secondary hover:text-gray-100 rounded-lg text-lg font-medium dark:text-gray-100"
               >
                 Profile

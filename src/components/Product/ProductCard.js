@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
+import AddToCart from "./AddToCart";
 
 const ProductCard = ({ name, price, imageUrls, description, _id }) => {
   return (
@@ -26,9 +27,10 @@ const ProductCard = ({ name, price, imageUrls, description, _id }) => {
           <span className="text-primary font-bold text-xl dark:text-gray-300">
             <span className="line-through">${price * 1.2}&nbsp;</span>${price}
           </span>
-          <button className="px-4 py-2 text-xl rounded-xl bg-primary text-bglight dark:bg-secondary dark:text-bglight hover:bg-primary/90 dark:hover:bg-secondary/80 transition">
-            <FaShoppingCart />
-          </button>
+          <div className="text-xl rounded-xl text-bglight  dark:text-bglight hover:bg-primary/90 dark:hover:bg-secondary/80 transition">
+            
+            <AddToCart product={{ name, price, imageUrls, id: _id }} />
+          </div>
         </div>
       </div>
     </div>
