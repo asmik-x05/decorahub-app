@@ -5,6 +5,9 @@ export const CONTACT_ROUTE = "/contact";
 export const ABOUT_ROUTE = "/about";
 export const LOGIN_ROUTE = "/login";
 export const REGISTER_ROUTE = "/register";
+export const PROFILE_ROUTE = "/profile";
+export const CART_ROUTE = "/cart";
+export const ORDER_ROUTE = "/orders";
 
 export const ADMIN_DASHBOARD_ROUTE = "/dashboard";
 export const ADMIN_PRODUCTS_ROUTE = "/product-management";

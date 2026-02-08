@@ -1,56 +1,14 @@
-"use client";
+import ProfileForm from "@/components/profile/ProfileForm";
+import React from "react";
 
-import { updateUser } from "@/api/user";
-import ProfileImage from "@/components/profile/Image";
-import Spinner from "@/components/Spinner";
-import { setUser } from "@/redux/auth/authSlice";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
-
-const ProfilePage = () => {
-  const { user } = useSelector((state) => state.auth);
-
-  const [loading, setLoading] = useState(false);
-
-  
-
-  const dispatch = useDispatch();
-
-  function submitForm(data) {
-    setLoading(true);
-
-    updateUser(user._id, {
-      name: data.name,
-      email: data.email,
-      phone: data.phone,
-      address: {
-        city: data.city,
-        province: data.province,
-      },
-    })
-      .then((data) => {
-        dispatch(setUser(data));
-        toast.success("User update successful.");
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error("User update failed.");
-      })
-      .finally(() => setLoading(false));
-  }
-
+const page = () => {
   return (
-    <section className="bg-white dark:bg-gray-900">
-      <div className="py-8 px-4 mx-auto max-w-4xl lg:py-16">
-        <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
-          General Information
-        </h2>
-        <ProfileImage />
+     <section className="px-4 py-12 text-txt-primary dark:text-txt-primary-dark bg-bglight dark:bg-bgdark/90">
+      <div className="container mx-auto p-4 md:w-3/5">
+        <ProfileForm />
       </div>
     </section>
   );
 };
 
-export default ProfilePage;
+export default page;

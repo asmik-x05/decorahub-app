@@ -4,7 +4,11 @@ import { FaBoxOpen, FaClock, FaPencilAlt, FaTruck } from "react-icons/fa";
 import { FaCircleCheck, FaCircleXmark } from "react-icons/fa6";
 import OrderTableHead from "./OrderTableHead";
 import Link from "next/link";
-import { ADMIN_ORDERS_ROUTE, ADMIN_PRODUCTS_ROUTE, PRODUCTS_ROUTE } from "@/constants/routes";
+import {
+  ADMIN_ORDERS_ROUTE,
+  ADMIN_PRODUCTS_ROUTE,
+  PRODUCTS_ROUTE,
+} from "@/constants/routes";
 import OrderAction from "./Action";
 
 const OrderTable = ({ loading, orders, disableAction }) => {
@@ -79,7 +83,6 @@ const OrderTable = ({ loading, orders, disableAction }) => {
               <td>
                 province: {order.shippingAddress.province},<br />
                 City: {order.shippingAddress.city}, <br />
-                street: {order.shippingAddress.street}
               </td>
 
               <td>
@@ -91,12 +94,12 @@ const OrderTable = ({ loading, orders, disableAction }) => {
                 <span>{format(order.createdAt, "dd MMM, yyyy")}</span>
               </td>
               <td className="px-4 py-3">
-                      {disableAction ? (
-                        <FaCog />
-                      ) : (
-                        <OrderAction id={order._id} status={order.status} />
-                      )}
-                    </td>
+                {disableAction ? (
+                  <FaCog />
+                ) : (
+                  <OrderAction id={order._id} status={order.status} />
+                )}
+              </td>
             </tr>
           ))}
         </tbody>
