@@ -5,6 +5,7 @@ import { FaBars, FaSearch, FaShoppingCart } from "react-icons/fa";
 import Navlink from "./Navlink";
 import ThemeToggler from "./ThemeToggler";
 import User from "./User";
+import CartIcon from "./CartIcon";
 
 const Header = () => {
   return (
@@ -26,7 +27,7 @@ const Header = () => {
               <FaSearch className="text-lg cursor-pointer" />
             </div>
             <div className="h-8 w-8 rounded-full flex justify-center items-center">
-              <FaShoppingCart className="text-lg cursor-pointer" />
+              <CartIcon />
             </div>
             <div className="h-8 w-8 rounded-full flex justify-center items-center">
               <ThemeToggler />
@@ -47,7 +48,7 @@ const Header = () => {
             </Link>
             <div className="flex gap-4 p-2 items-center">
               <div className="h-8 w-8 rounded-full flex justify-center items-center">
-                <FaShoppingCart className="text-lg cursor-pointer" />
+                <CartIcon />
               </div>
               <div className="h-8 w-8 rounded-full flex justify-center items-center">
                 <ThemeToggler />

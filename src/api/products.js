@@ -65,3 +65,15 @@ export const deleteProduct = async (id) => {
 
   return response.data;
 };
+
+export const getProductCategories = async () => {
+  const response = await axios.get(`${config.apiUrl}/api/product/categories`);
+
+  return response.data;
+};
+
+export const getProductBrands = async () => {
+  const response = await axios.get(`${config.apiUrl}/api/product/brands`);
+
+  return response.data;
+};

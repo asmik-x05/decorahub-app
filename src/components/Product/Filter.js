@@ -7,7 +7,7 @@ const DEFAULT_SORT = JSON.stringify({ createdAt: -1 });
 const DEFAULT_MIN_PRICE = 0;
 const DEFAULT_MAX_PRICE = 10000000;
 
-const ProductFilter = () => {
+const ProductFilter = ({ productBrands, productCategories }) => {
   const router = useRouter();
   const [name, setName] = useState("");
   const [sort, setSort] = useState(DEFAULT_SORT);
@@ -60,7 +60,8 @@ const ProductFilter = () => {
         <select
           name="sort"
           id="sort"
-             className="rounded-lg px-2 py-1 outline-0 border border-gray-300 w-full bg-primary font-medium text-white"
+          value={sort}
+          className="rounded-lg px-2 py-1 outline-0 border border-gray-300 w-full bg-primary font-medium text-white"
           onChange={(e) => setSort(e.target.value)}
         >
           <option value={DEFAULT_SORT}>Date: Latest</option>
@@ -82,6 +83,7 @@ const ProductFilter = () => {
           <input
             type="number"
             id="min"
+            value={minPrice}
             placeholder="min"
             className="rounded-lg px-2 py-1 outline-0 border border-gray-300 w-full"
             onChange={(e) => setMinPrice(e.target.value)}
@@ -91,6 +93,7 @@ const ProductFilter = () => {
             type="number"
             id="max"
             placeholder="max"
+            value={maxPrice}
             className="rounded-lg px-2 py-1 outline-0 border border-gray-300 w-full"
             onChange={(e) => setMaxPrice(e.target.value)}
           />
@@ -102,67 +105,36 @@ const ProductFilter = () => {
           name="Category"
           id="Category"
           className="rounded-lg px-2 py-1 outline-0 border border-gray-300 w-full bg-primary font-medium text-white"
+          value={category}
           onChange={(e) => setCategory(e.target.value)}
         >
-          <option value="" className="">All</option>
-          <option value="table" className="">Table</option>
-          <option value="sofa" className="">Sofa</option>
-          <option value="chair" className="">Chair</option>
-          <option value="bed" className="">Bed</option>
-          <option value="storage" className="">Storage</option>
-            
+          <option value="" className="">
+            All
+          </option>
+          {productCategories?.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
         </select>
       </div>
       <div className="py-4">
         <h4 className="mb-2 font-medium">Brand:</h4>
         <div className="px-4">
-          <div className="flex items-center justify-start gap-2">
-            <input
-              type="checkbox"
-              name="IKEA"
-              id="IKEA"
-              onChange={() => handleCheckboxChange("IKEA")}
-            />
-            <label htmlFor="IKEA" className="ml-2">
-              IKEA
-            </label>
-          </div>
-
-          <div className="flex items-center justify-start gap-2 py-0.5">
-            <input
-              type="checkbox"
-              name="noBrand"
-              id="noBrand"
-              onChange={() => handleCheckboxChange("noBrand")}
-            />
-            <label htmlFor="noBrand" className="ml-2">
-              No Brand
-            </label>
-          </div>
-
-          <div className="flex items-center justify-start gap-2">
-            <input
-              type="checkbox"
-              name="UrbanLadder"
-              id="UrbanLadder"
-              onChange={() => handleCheckboxChange("Urban Ladder")}
-            />
-            <label htmlFor="UrbanLadder" className="ml-2">
-              Urban Ladder
-            </label>
-          </div>
-
-          <div className="flex items-center justify-start gap-2">
-            <input
-              type="checkbox"
-              name="Godrej"
-              id="Godrej"
-              onChange={() => handleCheckboxChange("Godrej")}
-            />
-            <label htmlFor="Godrej" className="ml-2">
-              Godrej
-            </label>
-          </div>
+          {productBrands?.map((brand) => (
+            <div key={brand} className="flex items-center justify-start gap-2">
+              <input
+                type="checkbox"
+                checked={brands.includes(brand)}
+                name={brand}
+                id={brand}
+                onChange={() => handleCheckboxChange(brand)}
+              />
+              <label htmlFor={brand} className="ml-2">
+                {brand}
+              </label>
+            </div>
+          ))}
         </div>
       </div>
 
