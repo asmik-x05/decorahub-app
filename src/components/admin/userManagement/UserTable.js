@@ -4,6 +4,7 @@ import UserTableHead from "./UserTableHead";
 import { FaImage, FaPencilAlt } from "react-icons/fa";
 import Action from "./RoleAction";
 import Pagination from "@/components/Product/Pagination";
+import Image from "next/image";
 
 const UserTable = ({ loading, users, disableAction }) => {
   return (
@@ -20,9 +21,9 @@ const UserTable = ({ loading, users, disableAction }) => {
                 scope="row"
                 className="flex items-center px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white"
               >
-                {user.imageUrl ? (
+                {user.profileImgUrl ? (
                   <Image
-                    src={user.imageUrl}
+                    src={user.profileImgUrl}
                     alt={user.name}
                     height={100}
                     width={150}
