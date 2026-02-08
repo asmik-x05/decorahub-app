@@ -66,10 +66,8 @@ const Header = () => {
               <FaSearch />
             </button>
           </div>
-          <div className="flex justify-center items-center">
-            <FaBars />
-          </div>
-          <Navlink className="hidden" />
+         
+          <Navlink />
         </div>
       </div>
     </header>
