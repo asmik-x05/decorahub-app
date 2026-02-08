@@ -40,3 +40,34 @@ export const cancelOrder = async (id) => {
 
   return response.data;
 };
+
+export const getOrdersByUser = async (status) => {
+  let url = "/api/order/user";
+
+  if (status) url += `?status=${status}`;
+
+  const response = await api.get(url);
+
+  return response.data;
+};
+
+export const payViaKhalti = async (id) => {
+  const response = await api.post(`/api/order/${id}/payment/khalti`);
+
+  return response.data;
+};
+
+export const payViaCash = async (id) => {
+  const response = await api.post(`/api/order/${id}/payment/cash`);
+
+  return response.data;
+};
+
+export const confirmPayment = async (id, status) => {
+  const response = await api.put(`/api/order/${id}/confirm-payment`, {
+    status,
+  });
+
+  return response.data;
+};
+
