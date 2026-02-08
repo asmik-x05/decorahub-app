@@ -10,7 +10,7 @@ import Image from "next/image";
 import OrderStatus from "./Status";
 import PayViaKhalti from "./PayViaKhalti";
 import CashOnDelivery from "./CashOnDelivery";
-// import PayViaStripe from "./PayViaStripe";
+import PayViaStripe from "./PayViaStripe";
 import { useRouter } from "next/navigation";
 
 const OrderCard = ({ order }) => {
@@ -34,16 +34,16 @@ const OrderCard = ({ order }) => {
   }
 
   return (
-    <div className="main-box border border-gray-200 dark:border-gray-700 rounded-xl pt-6 max-w-xl max-lg:mx-auto lg:max-w-full mb-5 overflow-hidden">
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between px-6 pb-6 border-b border-gray-200 dark:border-gray-700">
+    <div className="main-box border border-gray-400 dark:border-gray-700 rounded-xl pt-6 max-w-xl max-lg:mx-auto lg:max-w-full mb-5 overflow-hidden bg-gray-200 dark:bg-bgdark">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between px-6 pb-6 border-b border-gray-400 dark:border-gray-700">
         <div className="data">
-          <p className="font-semibold text-base leading-7 ">
+          <p className="font-semibold text-base leading-7 dark:text-gray-200 ">
             Order Id:
-            <span className="text-primary font-medium ml-2">
+            <span className="text-primary dark:text-secondary font-medium ml-2">
               #{order.orderNumber}
             </span>
           </p>
-          <p className="font-semibold text-base leading-7  mt-4">
+          <p className="font-semibold text-base leading-7 dark:text-gray-200 mt-4">
             Order Date :
             <span className="text-gray-400 font-medium ml-2">
               {format(order.createdAt, "dd MMM, yyyy")}
@@ -56,7 +56,7 @@ const OrderCard = ({ order }) => {
         {order.orderIteam?.map((item, index) => (
           <div
             key={index}
-            className="flex flex-col lg:flex-row items-center py-6 border-b border-gray-200 dark:border-gray-700 gap-6 w-full"
+            className="flex flex-col lg:flex-row items-center py-6 border-b border-gray-400 dark:border-gray-700 gap-6 w-full"
           >
             <div className="img-box max-lg:w-full">
               <Image
@@ -71,16 +71,16 @@ const OrderCard = ({ order }) => {
               <div className="grid grid-cols-1 lg:grid-cols-2 w-full">
                 <div className="flex items-center">
                   <div>
-                    <h2 className="font-semibold text-xl leading-8  mb-3">
+                    <h2 className="font-semibold text-xl leading-8 dark:text-gray-300 mb-3">
                       {item.product?.name}
                     </h2>
-                    <p className="font-normal text-lg leading-8 text-gray-500 mb-3 ">
+                    <p className="font-normal text-lg leading-8 text-gray-400  dark:text-gray-300 mb-3 ">
                       Brand: {item.product?.brand}
                     </p>
                     <div className="flex items-center ">
-                      <p className="font-medium text-base leading-7  ">
+                      <p className="font-medium text-base leading-7 dark:text-gray-200  ">
                         Qty:
-                        <span className="text-gray-500 ml-2">
+                        <span className="text-gray-500 dark:text-gray-400 ml-2">
                           {item.quantity}
                         </span>
                       </p>
@@ -90,8 +90,8 @@ const OrderCard = ({ order }) => {
                 <div className="grid grid-cols-2">
                   <div className="flex items-center max-lg:mt-3">
                     <div className="flex gap-3 lg:block">
-                      <p className="font-medium text-sm leading-7 ">Price</p>
-                      <p className="lg:mt-4 font-medium text-sm leading-7 text-primary">
+                      <p className="font-medium text-sm leading-7 dark:text-gray-200 ">Price</p>
+                      <p className="lg:mt-4 font-medium text-sm leading-7 text-primary dark:text-secondary">
                         Rs. {item.product?.price}
                       </p>
                     </div>
@@ -124,7 +124,7 @@ const OrderCard = ({ order }) => {
           {order.status === ORDER_STATUS_PENDING ? (
             <div className="pl-6 py-3 max-lg:text-center flex items-center gap-3">
               <PayViaKhalti id={order._id} />
-              {/* <PayViaStripe id={order._id} /> */}
+              <PayViaStripe id={order._id} />
               <CashOnDelivery id={order._id} />
             </div>
           ) : null}

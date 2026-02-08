@@ -29,7 +29,7 @@ const ProductImage = ({ images }) => {
         {images.map((item, index) => (
           <Image
             key={index}
-            className={`${item == image ? "border-gray-300" : "border-gray-900"} h-28 w-28 border-2 p-2 rounded-lg object-contain`}
+            className={`${item == image ? "dark:border-gray-300 border-gray-900 " : "border-gray-300 dark:border-gray-900"} h-28 w-28 border-2 p-2 rounded-lg object-contain`}
             src={item}
             onClick={() => setImage(item)}
             alt=""

@@ -1,14 +1,14 @@
 import axios from "axios";
 import config from "@/config/config";
 import api from ".";
-export const getAllOrders = async () => {
-  const authToken = localStorage.getItem("authToken");
 
-  const response = await axios.get(`${config.apiUrl}/api/order/`, {
-    headers: {
-      Authorization: `Bearer ${authToken}`,
-    },
-  });
+export const getAllOrders = async (status) => {
+  let url = "/api/order";
+
+  if (status) url += `?status=${status}`;
+
+  const response = await api.get(url);
+
   return response.data;
 };
 
@@ -71,3 +71,8 @@ export const confirmPayment = async (id, status) => {
   return response.data;
 };
 
+export const payViaStripe = async (id) => {
+  const response = await api.post(`/api/order/${id}/payment/stripe`);
+
+  return response.data;
+};

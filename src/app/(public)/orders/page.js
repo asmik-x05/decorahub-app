@@ -79,16 +79,16 @@ const OrdersPage = () => {
     );
 
   return (
-    <section className="py-16 relative">
+    <section className="py-16 relative min-h-screen bg-light dark:bg-bgdark/90">
       <div className="w-full container px-6 mx-auto">
-        <h2 className="font-manrope font-bold text-4xl leading-10 mb-10">
+        <h2 className="font-manrope font-bold text-4xl leading-10 mb-10 dark:text-gray-100">
           Your Orders
         </h2>
 
         <div className="border-b border-gray-200 mb-5">
-          <ul className="flex flex-wrap -mb-px text-sm font-medium text-center text-body">
+          <ul className="flex flex-wrap -mb-px text-xl font-medium text-center text-body">
             {statuses.map((status, index) => (
-              <li key={index} className="me-2">
+              <li key={index} className="me-2 dark:text-gray-100">
                 <Link
                   href={`?status=${status.value}`}
                   className={`${status.value == queryStatus ? "border-primary" : "border-transparent"} inline-flex gap-1 items-center justify-center p-4 border-b rounded-t-base hover:text-fg-brand hover:border-brand group hover:border-gray-500`}
